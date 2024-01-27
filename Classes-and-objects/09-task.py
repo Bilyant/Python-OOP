@@ -6,29 +6,29 @@ class PizzaDelivery:
         self.ordered = False
 
     def add_extra(self, ingredient: str, quantity: int, price_per_quantity: float):
-        if self.ordered is True:
-            return f"Pizza {self.name} already prepared, and we can't make any changes!"
+        if self.ordered:
+            return f'Pizza {self.name} already prepared, and we can\'t make any changes!'
         if ingredient not in self.ingredients:
             self.ingredients[ingredient] = 0
         self.ingredients[ingredient] += quantity
-        self.price += quantity * price_per_quantity
+        self.price += price_per_quantity * quantity
 
     def remove_ingredient(self, ingredient: str, quantity: int, price_per_quantity: float):
-        if self.ordered is True:
-            return f"Pizza {self.name} already prepared, and we can't make any changes!"
+        if self.ordered:
+            return f'Pizza {self.name} already prepared, and we can\'t make any changes!'
         if ingredient not in self.ingredients:
-            return f"Wrong ingredient selected! We do not use {ingredient} in {self.name}!"
-        if quantity > self.ingredients[ingredient]:
-            return f"Please check again the desired quantity of {ingredient}!"
+            return f'Wrong ingredient selected! We do not use {ingredient} in {self.name}!'
+        if self.ingredients[ingredient] < quantity:
+            return f'Please check again the desired quantity of {ingredient}!'
         self.ingredients[ingredient] -= quantity
         self.price -= quantity * price_per_quantity
 
     def make_order(self):
         self.ordered = True
-        ingredients = []
-        for ingr, quant in self.ingredients.items():
-            ingredients.append(f'{ingr}: {quant}')
-        return f"You've ordered pizza {self.name} prepared with {', '.join(ingredients)} and the price will be {self.price}lv."
+        ingredients_output = []
+        for ing, count in self.ingredients.items():
+            ingredients_output.append(f'{ing}: {count}')
+        return f'You\'ve ordered pizza {self.name} prepared with {", ".join(ingredients_output)} and the price will be {self.price}lv.'
 
 
 margarita = PizzaDelivery('Margarita', 11, {'cheese': 2, 'tomatoes': 1})
