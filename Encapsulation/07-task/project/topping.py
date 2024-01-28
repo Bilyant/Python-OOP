@@ -9,8 +9,8 @@ class Topping:
 
     @topping_type.setter
     def topping_type(self, value):
-        if value == "":
-            raise ValueError("The topping type cannot be an empty string")
+        if value.strip() == '':
+            raise ValueError('The topping type cannot be an empty string')
         self.__topping_type = value
 
     @property
@@ -20,5 +20,5 @@ class Topping:
     @weight.setter
     def weight(self, value):
         if value <= 0:
-            raise ValueError("The weight cannot be less or equal to zero")
+            raise ValueError('The weight cannot be less or equal to zero')
         self.__weight = value

@@ -6,16 +6,15 @@ class Player:
         self.__passing = passing
         self.__shooting = shooting
 
-    @property
-    def name(self):
+    def get_name(self):
         return self.__name
 
     def __str__(self):
-        output = [
-            f'Player: {self.name}',
+        result = [
+            f'Player: {self.__name}',
             f'Sprint: {self.__sprint}',
             f'Dribble: {self.__dribble}',
             f'Passing: {self.__passing}',
-            f'Shooting: {self.__shooting}'
+            f'Shooting: {self.__shooting}',
         ]
-        return '\n'.join(output)
+        return '\n'.join(result)
